@@ -18,10 +18,11 @@
   <h1 id='counter'>
     0
   </h1>
-  <button id='minus' > ➖ </button>
-  <button id='plus' > ➕ </button>
+  <button type= 'button' onclick='decrement()' id='minus' > ➖ </button>
+  <button id='plus' onclick='increment()'> ➕ </button>
   <button id='heart' > ❤️ </button>
-  <button id='pause' > pause </button>
+  <button id='pause' > start </button>
+  
 
   <ul class='likes'></ul>
 
@@ -31,11 +32,18 @@
 
     <h3>Leave a comment</h3>
 
-    <form id="comment-form" action="">
+    <form id="comment-form" action="#" method="post">
       <input type='text' name="comment" id="comment-input" cols="30" rows="10">
       </br>
       <button id='submit'>submit</button>
     </form>
+
+    <div id="comments">
+      <h3>My Comments</h3>
+      <ul id="comment">
+      </ul>
+     
+    </div>
 
   </div>
 
