@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     let counter = document.querySelector("h1#counter")
    
-    // let myVar = setInterval(myTimer, 1000);
+    let myVar = setInterval(myTimer, 1000);
 
-    // function myTimer() {
-    //     console.log(counter.innerHTML)
-    //     let a = parseInt(counter.innerHTML)
-    //     a+=1
-    //     counter.innerHTML = a;
-    // }
+    function myTimer() {
+        console.log(counter.innerHTML)
+        let a = parseInt(counter.innerHTML)
+        a+=1
+        counter.innerHTML = a;
+    }
 
 
 const plusButton = document.getElementById("plus")
@@ -33,7 +33,6 @@ const likes = document.querySelector("ul.likes")
 const likeButton = document.getElementById("heart")
 let numberLikes = {}
 likeButton.addEventListener('click', (event) => {
-    
     let value = parseInt(counter.innerHTML)
    
     let existingLi = likes.children.namedItem(value)
@@ -53,6 +52,39 @@ likeButton.addEventListener('click', (event) => {
         likes.appendChild(newLi)
     }
   
+})
+
+const pauseButton = document.getElementById("pause")
+let text = pauseButton.innerText
+pauseButton.addEventListener('click', (event) => {
+    if (text === 'pause'){
+        clearInterval(myVar);
+        plusButton.disabled = true 
+        minusButton.disabled = true 
+        likeButton.disabled = true 
+        text = pauseButton.innerText = 'resume'
+    }
+    else if(text === 'resume') {
+        myVar = setInterval(myTimer, 1000);
+        plusButton.disabled = false 
+        minusButton.disabled = false
+        likeButton.disabled = false
+        text = pauseButton.innerText = 'pause'
+
+    }
+})
+
+const formElement = document.getElementById("comment-form")
+console.log(formElement);
+const comments = document.getElementById("list")
+console.log(comments);
+formElement.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const inputElement =  event.target.querySelector("#comment-input")
+    const userInput = inputElement.value
+    const pTag = document.createElement("p")
+    pTag.innerText = userInput
+    comments.appendChild(pTag)
 })
        
 })
